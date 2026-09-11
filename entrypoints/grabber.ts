@@ -151,6 +151,8 @@ export default defineUnlistedScript(() => {
       #${ID} .arj-hide { background: transparent; padding: 4px 8px; }
       #${ID} .arj-log { flex: 1; overflow-y: auto; margin: 0; padding: 8px 12px; list-style: none; }
       #${ID} .arj-log li { padding: 1px 0; white-space: pre-wrap; word-break: break-word; }
+      #${ID} .arj-log li.arj-sub { padding-left: 2.2em; text-indent: -1.1em; color: rgba(255,255,255,.72); }
+      #${ID} .arj-log li.arj-sub::before { content: "– "; }
       #${ID} .arj-ok { color: #6fcf97; } #${ID} .arj-warn { color: #f2c94c; } #${ID} .arj-error { color: #ff8b7d; }`;
 
     return {
@@ -165,8 +167,11 @@ export default defineUnlistedScript(() => {
       },
       append(text: string, kind: Kind) {
         const item = document.createElement("li");
-        item.textContent = text;
-        if (kind) item.className = `arj-${kind}`;
+        // Detail lines are logged as "  · text"; render them as an indented
+        // bullet with a hanging indent so wrapped lines stay under the text.
+        const sub = text.match(/^\s+·\s*(.*)$/s);
+        item.textContent = sub ? sub[1] : text;
+        item.className = [sub ? "arj-sub" : "", kind ? `arj-${kind}` : ""].join(" ").trim();
         lines.appendChild(item);
         lines.scrollTop = lines.scrollHeight;
       },
