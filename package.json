@@ -1,0 +1,36 @@
+{
+  "name": "asana-rules-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension that reads Asana automation rules out of the UI and saves them as JSON for AI agents.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moollaza/asana-rules-extractor.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "postinstall": "wxt prepare",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "oxlint && oxfmt --check",
+    "format": "oxfmt",
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/icons.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/chrome": "^0.1.0",
+    "happy-dom": "^20.14.0",
+    "oxfmt": "^0.67.0",
+    "oxlint": "^1.82.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0",
+    "wxt": "^0.21.4"
+  }
+}
