@@ -1,0 +1,279 @@
+{
+  "id": "1200000000000000",
+  "name": "Route Tasks by Area",
+  "project": "User Feedback",
+  "status": "Active",
+  "lastRun": "Last run yesterday",
+  "when": {
+    "any": ["Task is added to this project", "Area is changed"]
+  },
+  "branches": [
+    {
+      "if": {
+        "all": ["Area is set to Alpha"]
+      },
+      "do": [
+        {
+          "move_to_section": "Alpha Section"
+        },
+        {
+          "add_to_project": "Alpha Team Inbox"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Ada Lovelace", "Grace Hopper", "Alan Turing", "Edsger Dijkstra"],
+            "gids": ["1200000000000001", "1200000000000002"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Beta"]
+      },
+      "do": [
+        {
+          "move_to_section": "Beta Section"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Barbara Liskov"],
+            "gids": ["1200000000000003", "1200000000000004"]
+          }
+        },
+        {
+          "add_to_project": "Beta Team Inbox"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Gamma"]
+      },
+      "do": [
+        {
+          "move_to_section": "Gamma Section"
+        },
+        {
+          "add_to_project": "Gamma Team Inbox"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Delta"]
+      },
+      "do": [
+        {
+          "move_to_section": "Delta Section"
+        },
+        {
+          "set_assignee": {
+            "Donald Knuth": "1200000000000005"
+          }
+        },
+        {
+          "add_collaborators": {
+            "Margaret Hamilton": "1200000000000006"
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Epsilon"]
+      },
+      "do": [
+        {
+          "move_to_section": "Epsilon Section"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Linus Torvalds", "Ken Thompson"],
+            "gids": ["1200000000000007", "1200000000000008"]
+          }
+        },
+        {
+          "add_collaborators": {
+            "names": ["Donald Knuth", "Margaret Hamilton"],
+            "gids": ["1200000000000006", "1200000000000005"]
+          }
+        },
+        {
+          "add_to_project": {
+            "useAI": true
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Zeta"]
+      },
+      "do": [
+        {
+          "move_to_section": "Zeta Section"
+        },
+        {
+          "add_to_project": "Zeta Team Inbox"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Eta"]
+      },
+      "do": [
+        {
+          "move_to_section": "Eta Section"
+        },
+        {
+          "add_to_project": "Eta Team Inbox"
+        },
+        {
+          "set_task_name": "\"\u2b50 Report: Task name\""
+        },
+        {
+          "add_collaborators": {
+            "names": ["Edsger Dijkstra"],
+            "gids": ["1200000000000009", "1200000000000010"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Theta"]
+      },
+      "do": [
+        {
+          "move_to_section": "Theta Section"
+        },
+        {
+          "add_to_project": "Theta Team Inbox"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Dennis Ritchie"],
+            "gids": ["1200000000000011", "1200000000000012"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Iota"]
+      },
+      "do": [
+        {
+          "move_to_section": "Iota Section"
+        },
+        {
+          "add_to_project": "Iota Team Inbox"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Frances Allen", "Tim Berners-Lee"],
+            "gids": ["1200000000000013", "1200000000000014"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Kappa"]
+      },
+      "do": [
+        {
+          "move_to_section": "Kappa Section"
+        },
+        {
+          "add_to_project": "Kappa Team Inbox"
+        },
+        {
+          "add_collaborators": {
+            "names": ["Radia Perlman", "Guido van Rossum"],
+            "gids": ["1200000000000015", "1200000000000016"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Lambda"]
+      },
+      "do": [
+        {
+          "move_to_section": "Lambda Section"
+        },
+        {
+          "add_to_project": "Lambda Team Inbox"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Mu"]
+      },
+      "do": [
+        {
+          "move_to_section": "Mu Section"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Nu"]
+      },
+      "do": [
+        {
+          "move_to_section": "Nu Section"
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Xi"]
+      },
+      "do": [
+        {
+          "move_to_section": "Xi Section"
+        },
+        {
+          "add_collaborators": {
+            "names": ["John Backus"],
+            "gids": ["1200000000000017", "1200000000000018", "1200000000000012"]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "all": ["Area is set to Omicron"]
+      },
+      "do": [
+        {
+          "move_to_section": "Omicron Section"
+        },
+        {
+          "add_to_project": "Omicron Team Inbox"
+        }
+      ]
+    }
+  ],
+  "aiInstructions": {
+    "text": "When a task's Area field is set to \"Epsilon\":\n\nDetermine if\n- the task is clearly about our Help Docs project and add it there\n- Otherwise add to Marketing Pages",
+    "references": [
+      {
+        "type": "project",
+        "name": "Help Docs",
+        "gid": "1200000000000101"
+      },
+      {
+        "type": "project",
+        "name": "Marketing Pages",
+        "gid": "1200000000000102"
+      }
+    ]
+  }
+}

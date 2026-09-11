@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* Semantic colour tokens; light and dark variants below. */
+:root {
+  --ds-surface-canvas: #fafafa;
+  --ds-surface-tertiary: #ffffff;
+  --ds-text-primary: rgba(0, 0, 0, 0.96);
+  --ds-text-secondary: rgba(0, 0, 0, 0.6);
+  --ds-accent-primary: #1074cc;
+  --ds-accent-secondary: #045eb2;
+  --ds-accent-content-primary: #ffffff;
+  --ds-destructive-primary: #ee1025;
+  --ds-destructive-secondary: #d11527;
+  --ds-destructive-content-primary: #ffffff;
+  --ds-control-fill-primary: rgba(0, 0, 0, 0.06);
+  --ds-control-fill-secondary: rgba(0, 0, 0, 0.09);
+  --ds-container-border-secondary: rgba(0, 0, 0, 0.09);
+  --ds-success-text: #1e7f5c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ds-surface-canvas: #1c1c1c;
+    --ds-surface-tertiary: #282828;
+    --ds-text-primary: rgba(255, 255, 255, 0.96);
+    --ds-text-secondary: rgba(255, 255, 255, 0.6);
+    --ds-accent-primary: #75b6eb;
+    --ds-accent-secondary: #4397e0;
+    --ds-accent-content-primary: #051133;
+    --ds-destructive-primary: #ff5359;
+    --ds-destructive-secondary: #d11527;
+    --ds-destructive-content-primary: #000000;
+    --ds-control-fill-primary: rgba(255, 255, 255, 0.12);
+    --ds-control-fill-secondary: rgba(255, 255, 255, 0.18);
+    --ds-container-border-secondary: rgba(255, 255, 255, 0.12);
+    --ds-success-text: #6fcf97;
+  }
+}
+
+@theme {
+  --color-surface-canvas: var(--ds-surface-canvas);
+  --color-surface-tertiary: var(--ds-surface-tertiary);
+  --color-text-primary: var(--ds-text-primary);
+  --color-text-secondary: var(--ds-text-secondary);
+  --color-accent: var(--ds-accent-primary);
+  --color-accent-hover: var(--ds-accent-secondary);
+  --color-accent-content: var(--ds-accent-content-primary);
+  --color-destructive: var(--ds-destructive-primary);
+  --color-destructive-hover: var(--ds-destructive-secondary);
+  --color-destructive-content: var(--ds-destructive-content-primary);
+  --color-control: var(--ds-control-fill-primary);
+  --color-control-hover: var(--ds-control-fill-secondary);
+  --color-border: var(--ds-container-border-secondary);
+  --color-success: var(--ds-success-text);
+  --font-product:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Roboto Mono", monospace;
+}
+
+@layer components {
+  /* --ds-button-md: 8px/20px padding, 16px/700, radius full */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[15px] leading-5 font-bold
+      transition-colors duration-150 cursor-pointer select-none
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent
+      disabled:opacity-50 disabled:cursor-default;
+    min-height: 44px;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-[13px];
+    min-height: 36px;
+  }
+  .btn-primary {
+    @apply bg-accent text-accent-content hover:not-disabled:bg-accent-hover;
+  }
+  .btn-secondary {
+    @apply bg-control text-text-primary border border-border hover:not-disabled:bg-control-hover;
+  }
+  .btn-danger {
+    @apply bg-destructive text-destructive-content hover:not-disabled:bg-destructive-hover;
+  }
+  .btn-icon {
+    @apply text-[11px];
+  }
+  .status {
+    @apply m-0 min-h-5 text-text-secondary break-words;
+  }
+  .status-ok {
+    @apply text-success;
+  }
+  .status-error {
+    @apply text-destructive;
+  }
+  .status-warn {
+    @apply text-text-primary;
+  }
+  .output {
+    @apply h-64 w-full resize-y rounded-xl border border-border bg-surface-tertiary p-3 font-mono text-[11px] leading-4 text-text-primary;
+  }
+
+  .tabs {
+    @apply flex gap-1 rounded-full bg-control p-1 self-start;
+  }
+  .tab {
+    @apply rounded-full px-3 py-1 text-[13px] font-bold text-text-secondary cursor-pointer
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+  .tab[aria-selected="true"] {
+    @apply bg-surface-tertiary text-text-primary shadow-sm;
+  }
+  .review {
+    @apply max-h-[28rem] overflow-y-auto rounded-xl border border-border bg-surface-tertiary py-1 text-[13px] leading-5;
+  }
+  .rv-project {
+    @apply m-0 px-3 pb-1 text-[12px] text-text-secondary;
+  }
+  .rv-rule + .rv-rule {
+    @apply border-t border-border;
+  }
+  /* Rows: chevron | text | right-aligned count. The text wraps; the count stays put. */
+  .rv-rule-summary,
+  .rv-branch-summary {
+    @apply grid items-baseline gap-x-2 cursor-pointer select-none px-3 py-1.5 hover:bg-control;
+    grid-template-columns: 0.75rem minmax(0, 1fr) auto;
+  }
+  .rv-rule-summary::-webkit-details-marker,
+  .rv-branch-summary::-webkit-details-marker {
+    display: none;
+  }
+  .rv-rule-summary::before,
+  .rv-branch-summary::before {
+    content: "";
+    /* CSS chevron instead of a glyph: "▸" renders tiny in the system font. */
+    @apply inline-block h-2 w-2 self-center border-r-2 border-t-2 border-text-secondary transition-transform duration-150;
+    transform: rotate(45deg);
+  }
+  details[open] > .rv-rule-summary::before,
+  details[open] > .rv-branch-summary::before {
+    transform: rotate(135deg);
+  }
+  .rv-summary-text {
+    @apply min-w-0;
+  }
+  .rv-name {
+    @apply font-bold;
+  }
+  .rv-meta,
+  .rv-count {
+    @apply whitespace-nowrap text-[12px] text-text-secondary;
+  }
+  .rv-kw {
+    @apply font-bold text-accent;
+  }
+  .rv-flag {
+    @apply ml-1 rounded-full bg-destructive px-2 text-[11px] font-bold leading-4 text-destructive-content align-middle;
+  }
+  .rv-rule-body {
+    @apply flex flex-col pb-1;
+  }
+  .rv-branch {
+    @apply ml-3;
+  }
+  .rv-when {
+    @apply grid gap-x-2 px-3 py-1;
+    grid-template-columns: 0.75rem minmax(0, 1fr);
+  }
+  .rv-when > .rv-kw {
+    @apply col-start-2;
+  }
+  .rv-when .rv-joiner {
+    @apply ml-1 font-normal text-[12px] text-text-secondary;
+  }
+  .rv-conds,
+  .rv-actions,
+  .rv-warnings {
+    @apply m-0 list-none p-0;
+  }
+  .rv-when .rv-conds {
+    @apply col-start-2 pl-3;
+  }
+  .rv-when .rv-conds li::before,
+  .rv-action::before {
+    content: "·";
+    @apply mr-1.5 text-text-secondary;
+  }
+  .rv-warnings {
+    @apply mx-3 my-1 rounded-lg bg-destructive/10 px-3 py-1 text-[12px] text-destructive;
+  }
+  .rv-actions {
+    @apply py-0.5 pl-8 pr-3;
+  }
+  .rv-action-label {
+    @apply text-text-secondary;
+  }
+  .rv-action-label::after {
+    content: ": ";
+  }
+  .rv-ai-text {
+    @apply mx-3 my-1 whitespace-pre-wrap rounded-lg bg-control p-2 font-product text-[12px] leading-4;
+  }
+  .rv-ai .rv-conds {
+    @apply px-3 pb-1 text-[12px] text-text-secondary;
+  }
+  .rv-error {
+    @apply m-0 px-3 pb-2 text-[12px] text-destructive;
+  }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Asana Rules Extractor</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="w-[520px] bg-surface-canvas text-text-primary font-product text-[14px] leading-5">
+    <main class="flex flex-col gap-4 p-4">
+      <header class="flex items-center gap-3">
+        <img src="/icon/48.png" alt="" width="28" height="28" class="rounded-lg" />
+        <h1 class="text-[16px] font-bold leading-6">Asana Rules Extractor</h1>
+      </header>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button id="all" class="btn btn-primary" type="button">
+          <span class="btn-icon" aria-hidden="true">▶</span> Grab all rules
+        </button>
+        <button id="one" class="btn btn-secondary" type="button">Grab open rule</button>
+      </div>
+
+      <p id="status" class="status" role="status">Open your Asana project, then grab.</p>
+
+      <div id="view-tabs" class="tabs" role="tablist" hidden>
+        <button id="tab-review" class="tab" type="button" role="tab" aria-selected="true">
+          Review
+        </button>
+        <button id="tab-json" class="tab" type="button" role="tab" aria-selected="false">
+          JSON
+        </button>
+      </div>
+
+      <div id="review" class="review" role="tabpanel" hidden></div>
+
+      <textarea
+        id="output"
+        class="output"
+        readonly
+        hidden
+        spellcheck="false"
+        aria-label="Extracted rules JSON"
+        role="tabpanel"
+      ></textarea>
+
+      <div id="result-actions" class="grid grid-cols-3 gap-2" hidden>
+        <button id="save" class="btn btn-primary btn-sm" type="button">Save to file…</button>
+        <button id="copy" class="btn btn-secondary btn-sm" type="button">Copy</button>
+        <button id="clear" class="btn btn-secondary btn-sm" type="button">Clear</button>
+      </div>
+
+      <details class="text-text-secondary">
+        <summary class="cursor-pointer select-none text-[13px]">Debug</summary>
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          <button id="dump" class="btn btn-secondary btn-sm" type="button">Dump DOM digest</button>
+          <button id="download" class="btn btn-secondary btn-sm" type="button" hidden>
+            Save full HTML…
+          </button>
+        </div>
+        <p class="mt-2 text-[12px] leading-4">
+          Every run is also saved to <code>Downloads/asana-rules-extractor/latest/</code>.
+        </p>
+      </details>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
