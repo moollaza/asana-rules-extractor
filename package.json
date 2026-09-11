@@ -1,6 +1,6 @@
 {
   "name": "asana-rules-extractor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Browser extension that reads Asana automation rules out of the UI and saves them as JSON for AI agents.",
   "repository": {
