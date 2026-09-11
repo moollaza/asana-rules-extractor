@@ -1,3 +1,5 @@
+# Tag v* -> build, test, zip for Chrome and Firefox, attach to a GitHub release.
+# Store submission is a separate, manual workflow (publish.yml).
 name: Release
 on:
   push:
@@ -18,8 +20,11 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - run: pnpm zip
+      - run: pnpm zip:all
       - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
-          files: .output/*-chrome.zip
+          files: |
+            .output/*-chrome.zip
+            .output/*-firefox.zip
+            .output/*-sources.zip
           generate_release_notes: true

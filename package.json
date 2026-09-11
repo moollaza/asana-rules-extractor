@@ -1,6 +1,6 @@
 {
   "name": "asana-rules-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Browser extension that reads Asana automation rules out of the UI and saves them as JSON for AI agents.",
   "repository": {
@@ -12,6 +12,10 @@
     "dev": "wxt",
     "build": "wxt build",
     "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "zip:all": "pnpm zip && pnpm zip:firefox",
+    "submit:dry": "wxt submit --dry-run --chrome-zip .output/*-chrome.zip --firefox-zip .output/*-firefox.zip --firefox-sources-zip .output/*-sources.zip",
+    "submit": "wxt submit --chrome-zip .output/*-chrome.zip --firefox-zip .output/*-firefox.zip --firefox-sources-zip .output/*-sources.zip",
     "postinstall": "wxt prepare",
     "test": "vitest run",
     "test:watch": "vitest",

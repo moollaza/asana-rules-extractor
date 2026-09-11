@@ -5,8 +5,13 @@ export default defineConfig({
   srcDir: ".",
   outDir: ".output",
   vite: () => ({ plugins: [tailwindcss()] }),
+  // Same MV3 manifest for every browser; Firefox needs a stable add-on id for AMO.
+  manifestVersion: 3,
   manifest: {
     name: "Asana Rules Extractor",
+    browser_specific_settings: {
+      gecko: { id: "asana-rules-extractor@moollaza.github.io", strict_min_version: "128.0" },
+    },
     description: "Read Asana automation rules out of the UI and save them as JSON for AI agents.",
     permissions: ["scripting", "activeTab", "downloads", "storage"],
     host_permissions: ["https://app.asana.com/*"],
