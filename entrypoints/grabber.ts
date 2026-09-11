@@ -371,7 +371,7 @@ export default defineUnlistedScript(() => {
     }
     if (ruleRows().length) return true;
     const drilldown = [...document.querySelectorAll<HTMLElement>(SEL.drilldownRow)].find(
-      (row) => /^Rules\b/.test(readText(row)), // "Rules 13", not "Rules13"
+      (row) => /^(Rules|Automations)\b/.test(readText(row)), // "Automations 12"; was "Rules" before Sept 2026
     );
     if (!drilldown) return false;
     drilldown.click();

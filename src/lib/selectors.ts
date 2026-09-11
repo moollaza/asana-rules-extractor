@@ -51,7 +51,7 @@ export const SEL = {
     ".AutomationConfigurationContentPills, .CustomPropertyEnumsAutomationConfigurationContent",
   pill: '[class*="PillThemeablePresentation"]',
 
-  // Customize pane -> Rules list
+  // Customize pane -> Automations list (called "Rules" until Sept 2026; class names kept the old name)
   customizeButton: ".CustomizeMenuButton",
   customizeHome: ".CustomizeGalleryHomePage-content",
   drilldownRow: ".CustomizePaneDrilldownRow-buttonCard",
