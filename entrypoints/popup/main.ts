@@ -18,6 +18,9 @@ const review = $<HTMLDivElement>("review");
 const viewTabs = $<HTMLDivElement>("view-tabs");
 const reviewTab = $<HTMLButtonElement>("tab-review");
 const jsonTab = $<HTMLButtonElement>("tab-json");
+// Several copies can be installed side by side (each dragged zip is a new
+// extension), so the popup says which build it is.
+$("version").textContent = `v${chrome.runtime.getManifest().version}`;
 const resultActions = $<HTMLDivElement>("result-actions");
 const copyButton = $<HTMLButtonElement>("copy");
 const saveButton = $<HTMLButtonElement>("save");
