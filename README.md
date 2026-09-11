@@ -4,8 +4,8 @@ Browser extension that reads the automation rules of an Asana project out of the
 
 **Quick start**
 
-1. Download `asana-rules-extractor-<version>-chrome.zip` from the [latest release](https://github.com/moollaza/asana-rules-extractor/releases/latest) and unzip it.
-2. In Chrome open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, pick the unzipped folder.
+1. Download `asana-rules-extractor-<version>-chrome.zip` from the [latest release](https://github.com/moollaza/asana-rules-extractor/releases/latest).
+2. In Chrome open `chrome://extensions`, turn on **Developer mode**, and drag the zip onto the page. (Or unzip it and use **Load unpacked**.)
 3. Open an Asana project, click the extension icon, click **Grab all rules**.
 
 ## What it does
@@ -16,7 +16,7 @@ Browser extension that reads the automation rules of an Asana project out of the
 
 ## Install
 
-**Chrome, from a release.** Follow the quick start above. Keep the unzipped folder; Chrome loads from it. Edge accepts the same zip.
+**Chrome, from a release.** Follow the quick start above. If you used Load unpacked, keep the unzipped folder; Chrome loads from it. Edge accepts the same zip.
 
 **Firefox.** Each release also attaches `asana-rules-extractor-<version>-firefox.zip`. Unzip it, open `about:debugging`, choose **This Firefox → Load Temporary Add-on**, and pick `manifest.json`. A store listing is pending; until then the add-on is removed when Firefox restarts.
 
